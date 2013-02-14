@@ -47,9 +47,7 @@ public class MainActivity extends Activity
 		bindToConnectionSwitch();
 		
 		log("Application running");
-	}
-	
-	private void subscribeToPublicChannel() {
+		
 		publicChannel = pusher.subscribe(PUBLIC_CHANNEL_NAME, this, "some_event");
 	}
 	
@@ -76,12 +74,6 @@ public class MainActivity extends Activity
 				change.getPreviousState(), change.getCurrentState() );
 		
 		log( msg );
-		
-		if(change.getCurrentState() == ConnectionState.CONNECTED ) {
-			// TODO: when "auto-reconnection" and "allow subscriptions prior to connections.subscription"
-			// is implemented we should only need to subscribe once.
-			subscribeToPublicChannel();
-		}
 	}
 
 	@Override
